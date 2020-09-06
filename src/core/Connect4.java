@@ -255,7 +255,7 @@ public class Connect4 {
 		if (upperLeftCheck(row, column) || upperMiddleCheck(row, column) || upperRightCheck(row, column) || midRightCheck(row, column) || midLeftCheck(row, column) || lowerLeftCheck(row, column) || lowerMiddleCheck(row, column) || lowerRightCheck(row, column)) {
 		return true;
 		}
-		//We check 5 because the peace the player placed that turn is counted twice.
+		//**We check 5 because the peace the player placed that turn is counted twice.*/
 		if (leftDiagMatching == 5 || rightDiagMatching == 5 || verticalMatching == 5 || horizMatching == 5) {
 			return true;
 		}

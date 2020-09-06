@@ -13,6 +13,9 @@ import java.util.Scanner;
 
 public class Connect4TextConsole extends core.Connect4 {
 
+	/**
+	 * Generates a new blank gameboard
+	 */
 	public Connect4TextConsole(){
 		for(int i=0; i < ROWS; i++) {
 			for(int j=0; j < COLUMNS; j++) {
@@ -54,7 +57,8 @@ public class Connect4TextConsole extends core.Connect4 {
 		}
 		playerTurn(input);
 		if(hasWon()) {
-			if(activePlayer == 2) { //selectColumn switched active player so the opposite of the active won
+			/**playerTurn switched active player so the opposite of the active won */
+			if(activePlayer == 2) { 
 				printBoard();
 				System.out.print("PlayerX Wins!\n");
 			} else {
