@@ -1,12 +1,13 @@
 package ui;
+
 /**
- * ui for a Connect4 Game
+ * text based ui for a Connect4 Game
  * 
  * 
  * Date: 9/3/2020
  * 
  * @author Ryan Wells
- * @version 1.0
+ * @version 1.1
  */
 import java.util.Scanner;
 
@@ -36,7 +37,10 @@ public class Connect4TextConsole extends core.Connect4 {
 		}
 	}
 	
-	private void playGame() {
+	/**
+	 * intiates the game for a console output using logic from the core package.
+	 */
+	private void playGame(){
 		if(activePlayer == 1) {
 			System.out.print("PlayerX - your turn. Choose a column number from 1-7\n");
 		} else {
@@ -44,12 +48,12 @@ public class Connect4TextConsole extends core.Connect4 {
 		}
 		Scanner in = new Scanner (System.in);
 		int input = in.nextInt();
-		while (input < 1 || input > 7) {
+		while (input < 1 || input > COLUMNS) {
 			System.out.print("Invalid Input\n");
 			input = in.nextInt();
 		}
-		selectColumn(input);
-		if(checkWinner()) {
+		playerTurn(input);
+		if(hasWon()) {
 			if(activePlayer == 2) { //selectColumn switched active player so the opposite of the active won
 				printBoard();
 				System.out.print("PlayerX Wins!\n");
@@ -58,6 +62,9 @@ public class Connect4TextConsole extends core.Connect4 {
 				System.out.print("PlayerO Wins!\n");
 			}
 			
+		} else if(checkDraw()) {
+			printBoard();
+			System.out.print("Game is a draw\n");
 		} else {
 			
 			printBoard();
