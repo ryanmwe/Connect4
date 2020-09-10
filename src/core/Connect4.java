@@ -17,14 +17,38 @@ public class Connect4 {
 	protected int activePlayer = 1;
 	protected final int ROWS = 6;
 	protected final int COLUMNS = 7;
-	protected String[][] gameBoard = new String [ROWS][COLUMNS];	
-
+	protected String[][] gameBoard = new String [ROWS][COLUMNS];
+	private boolean CPU = false;
+	private boolean gameEnded = false;
+	/**
+	 * sets the CPU value
+	 */
+	protected void setCPU(boolean bool) {
+		CPU = bool;
+	}
+	/**
+	 * returns of CPU is false or true
+	 */
+	protected boolean isCPU() {
+		return CPU;
+	}
+	/**
+	 * set gameEnded flag
+	 * @param bool
+	 */
+	protected void setGameEnded(boolean bool) {
+		gameEnded = bool;
+	}
+	
+	protected boolean hasGameEnded() {
+		return gameEnded;
+	}
 	/**
 	 * places a token
 	 * @param row
 	 * @param column
 	 */
-	private void insertToken(int row, int column) {
+	protected void insertToken(int row, int column) {
 		if(activePlayer == 1) {
 			gameBoard[row][column] = "| X |";
 		}
@@ -39,7 +63,7 @@ public class Connect4 {
 	 * @param column
 	 * @return
 	 */
-	private boolean hasToken(int row, int column) {
+	protected boolean hasToken(int row, int column) {
 		if (gameBoard[row][column] == "|   |") {
 			return false;
 		}
@@ -255,8 +279,8 @@ public class Connect4 {
 		if (upperLeftCheck(row, column) || upperMiddleCheck(row, column) || upperRightCheck(row, column) || midRightCheck(row, column) || midLeftCheck(row, column) || lowerLeftCheck(row, column) || lowerMiddleCheck(row, column) || lowerRightCheck(row, column)) {
 		return true;
 		}
-		//**We check 5 because the peace the player placed that turn is counted twice.*/
-		if (leftDiagMatching == 5 || rightDiagMatching == 5 || verticalMatching == 5 || horizMatching == 5) {
+		//**We check 5 because the piece the player placed that turn is counted twice.*/
+		if (leftDiagMatching >= 5 || rightDiagMatching >= 5 || verticalMatching >= 5 || horizMatching >= 5) {
 			return true;
 		}
 		resetCounter();
@@ -266,7 +290,7 @@ public class Connect4 {
 	/**
 	 * switches active player between player 1 and 2
 	 */
-	protected void switchPlayer() {
+	private void switchPlayer() {
 		if (activePlayer == 1) {
 			activePlayer = 2;
 		} else {
@@ -275,7 +299,7 @@ public class Connect4 {
 		
 	}
 	/**
-	 * executes the players turn, determines if they have won or not and switches the active player if the other has won.
+	 * executes the players turn, determines if they have won or not and switches the active player.
 	 * @param column
 	 */
 	protected void playerTurn(int column){
@@ -289,7 +313,7 @@ public class Connect4 {
 			victory = winCheck(row,column);
 			switchPlayer();
 		} else {
-			System.out.print("Invalid input\n");
+			System.out.print("Invalid input: The column is full\n");
 		}
 	}
 	
