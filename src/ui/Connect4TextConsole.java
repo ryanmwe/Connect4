@@ -8,7 +8,7 @@ package ui;
  * Date: 9/3/2020
  * 
  * @author Ryan Wells
- * @version 1.1
+ * @version 1.2
  */
 import java.util.Scanner;
 import core.Connect4ComputerPlayer;
@@ -42,7 +42,9 @@ public class Connect4TextConsole extends core.Connect4 {
 			}
 		}
 	}
-	
+	/**
+	 * Checks the board status, to be used after playerMove();
+	 */
 	private void checkBoard() {
 		if(hasWon()) {
 			/**playerTurn switched active player so the opposite of the active won */
@@ -131,11 +133,14 @@ public class Connect4TextConsole extends core.Connect4 {
 
 	}
 
-		
+	/**
+	 * Main method to run the game.
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		Connect4TextConsole game = new Connect4TextConsole();
 		game.printBoard();
-		System.out.print("Begin Game. Enter 'P' if you want to play against another player; enter 'C' to play against computer.\n");
+		System.out.print("Begin Game. Enter 'P' if you want to play against another player; \nenter 'C' to play against computer.\n");
 		Scanner in = new Scanner (System.in);
 		String input = in.nextLine();
 		while (input.toUpperCase().compareTo("C") != 0 && input.toUpperCase().compareTo("P") != 0) {

@@ -112,6 +112,9 @@ public class Connect4ComputerPlayer {
 		}
 	}
 	
+	/**
+	 * CPU Chooses a random column to place a token
+	 */
 	private void chooseRandom() {
 		Random randotron = new Random();
 		int choice = randotron.nextInt(6);

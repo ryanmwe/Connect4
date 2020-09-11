@@ -6,7 +6,7 @@ package core;
  * Date: 9/3/2020
  * 
  * @author Ryan Wells
- * @version 1.3
+ * @version 1.4
  */
 public class Connect4 {
 	private boolean victory = false;
@@ -40,6 +40,10 @@ public class Connect4 {
 		gameEnded = bool;
 	}
 	
+	/**
+	 * Returns if the games win condition has been met or not
+	 * @return
+	 */
 	protected boolean hasGameEnded() {
 		return gameEnded;
 	}
@@ -81,6 +85,10 @@ public class Connect4 {
 		
 	}
 	
+	/**
+	 * returns if a player wont that turn
+	 * @return
+	 */
 	protected boolean hasWon() {
 		return victory;
 	}
