@@ -117,11 +117,11 @@ public class Connect4ComputerPlayer {
 	 */
 	private void chooseRandom() {
 		Random randotron = new Random();
-		int choice = randotron.nextInt(6);
+		int choice = randotron.nextInt(7);
 		choice++;
 		
 		while(game.hasToken(0,choice - 1)) {
-			choice = randotron.nextInt(6);
+			choice = randotron.nextInt(7);
 			choice++;
 		}
 		System.out.print("CPU chose " +choice +" \n");
