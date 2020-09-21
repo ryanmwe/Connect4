@@ -137,7 +137,7 @@ public class Connect4TextConsole extends core.Connect4 {
 	 * Main method to run the game.
 	 * @param args
 	 */
-	public static void main(String[] args) {
+	public static void start() {
 		Connect4TextConsole game = new Connect4TextConsole();
 		game.printBoard();
 		System.out.print("Begin Game. Enter 'P' if you want to play against another player; \nenter 'C' to play against computer.\n");

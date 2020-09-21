@@ -1,4 +1,19 @@
 package core;
+import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.stage.Stage;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
+import javafx.scene.text.Font;
+import ui.Connect4GUI;
+import ui.Connect4TextConsole;
 /**
  * logic for a connect 4 game.
  * 
@@ -6,9 +21,10 @@ package core;
  * Date: 9/3/2020
  * 
  * @author Ryan Wells
- * @version 1.4
+ * @version 1.5
  */
-public class Connect4 {
+public class Connect4 extends Application {
+	private Stage stage;
 	private boolean victory = false;
 	private int rightDiagMatching = 0;
 	private int leftDiagMatching = 0;
@@ -339,6 +355,76 @@ public class Connect4 {
 			}
 		}
 		return true;
+	}
+	/**
+	 * Replaces the main method, 
+	 * displays to use if they want to play with GUI or console ui
+	 */
+	@Override
+	public void start(Stage primaryStage) throws Exception {
+		this.stage = primaryStage;
+		GridPane buttonPane = new GridPane();
+		Button btConsole = new Button("Console");
+		Button btGUI = new Button("GUI");
+		ClientHandler clientHandle = new ClientHandler();
+		btConsole.setOnAction(clientHandle);
+		buttonPane.add(btConsole,1, 1);
+		buttonPane.add(btGUI,2, 1);
+		buttonPane.setAlignment(Pos.CENTER);
+		buttonPane.setPadding(new Insets(11.5, 12.5, 13.5, 14.5));
+		buttonPane.setHgap(5.5);
+		buttonPane.setVgap(10);
+		
+		BorderPane borderPane = new BorderPane();
+		Label label = new Label("Select your UI");
+		label.setFont(new Font("arial",24));
+		borderPane.setCenter(buttonPane);
+		borderPane.setTop(label);
+		BorderPane.setAlignment(label, Pos.BOTTOM_CENTER);
+		
+		
+		Scene scene = new Scene(borderPane, 240, 120);
+		primaryStage.setTitle("Connect 4");
+		primaryStage.setScene(scene);
+		primaryStage.show();
+	}
+		
+	/**
+	 * Class to handle button event from the client button
+	 * @author Ryan
+	 *
+	 */
+	class ClientHandler implements EventHandler<ActionEvent>{
+		/**
+		 * Starts the console ui when the "console" button is clicked
+		 */
+		@Override
+		public void handle(ActionEvent e) {
+			Connect4TextConsole.start();
+		}
+	}
+	/**
+	 * Class to handle button event from the GUI button
+	 * @author Ryan
+	 *
+	 */
+	class GUIHandler implements EventHandler<ActionEvent>{
+		/**
+		 * Starts the GUI ui when the "GUI" button is clicked
+		 * Currently needs to updated 
+		 */
+		@Override
+		public void handle(ActionEvent e) {
+			String[] args = new String[0];
+			Connect4GUI.launch(args);
+		}
+	}
+	/**
+	 * Main method to start to the program, launches the application.
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		launch(args);
 	}
 	
 }
