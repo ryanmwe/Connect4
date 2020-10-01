@@ -13,6 +13,7 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.Ellipse;
+
 /**
  * GUI ui for a connect 4 game.
  * 
@@ -57,6 +58,17 @@ public class Connect4GUI extends core.Connect4 {
 		primaryStage.setScene(scene);
 		primaryStage.show();
 	
+	}
+	private void createBackground() {
+		Rectangle square = new Rectangle(80,80);
+		
+		for (int i = 0; i < ROWS; i++) {
+			for (int k = 0; k < COLUMNS; k++) {
+				
+			}
+		}
+		
+		
 	}
 	
 	/**
@@ -123,6 +135,7 @@ public class Connect4GUI extends core.Connect4 {
 		private void onMouseClick(MouseEvent event) {
 			setToken();
 			playerTurn(GridPane.getColumnIndex((Node) event.getSource()) + 1);
+			
 		}
 		
 	}

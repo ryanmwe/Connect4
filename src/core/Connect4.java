@@ -36,6 +36,17 @@ public class Connect4 extends Application {
 	protected String[][] gameBoard = new String [ROWS][COLUMNS];
 	private boolean CPU = false;
 	private boolean gameEnded = false;
+	
+	/**
+	 * Creates a blank gameboard for the game to work with.
+	 */
+	public Connect4() {
+		for(int i=0; i < ROWS; i++) {
+			for(int j=0; j < COLUMNS; j++) {
+				gameBoard[i][j] ="|   |"; 
+			}
+		}		
+	}
 	/**
 	 * sets the CPU value
 	 */

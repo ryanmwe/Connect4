@@ -134,7 +134,7 @@ public class Connect4TextConsole extends core.Connect4 {
 	}
 
 	/**
-	 * Main method to run the game.
+	 * Main method to run the game in the console..
 	 * @param args
 	 */
 	public static void start() {
